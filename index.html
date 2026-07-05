@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Classic Tetris Game</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header>
+        <h1>TETRIS</h1>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle visual theme">☀ Light</button>
+    </header>
+
+    <div class="game-container">
+        <!-- Left Column: Hold & State Actions -->
+        <div class="panel side-left">
+            <div class="sub-panel">
+                <div class="panel-title">Hold</div>
+                <canvas id="holdCanvas" class="preview-canvas" width="100" height="100"></canvas>
+            </div>
+            <button class="btn" id="startBtn">Start Game</button>
+            <button class="btn" id="pauseBtn">Pause (P)</button>
+            <button class="btn btn-danger" id="resetScoreBtn" style="font-size: 0.7rem;">Clear High Score</button>
+        </div>
+
+        <!-- Center Column: Playing Field -->
+        <div class="board-wrapper">
+            <canvas id="gameBoard" width="300" height="600"></canvas>
+            
+            <!-- Dynamic State Overlays -->
+            <div id="readyOverlay" class="overlay">
+                <h3 style="color: var(--text-main)">Classic Rules</h3>
+                <p style="color: var(--text-muted); font-size:0.8rem; text-align:center; padding: 0 10px;">Press Start Button or Spacebar to begin placement.</p>
+            </div>
+
+            <div id="countdownOverlay" class="overlay hidden">
+                <div class="countdown-text" id="countdownTimer">3</div>
+            </div>
+
+            <div id="pauseOverlay" class="overlay hidden">
+                <h2 style="color: #eab308">PAUSED</h2>
+                <button class="btn" id="resumeBtn" style="width: auto; padding: 10px 20px;">Resume Game</button>
+            </div>
+
+            <div id="gameOverOverlay" class="overlay hidden">
+                <h2>GAME OVER</h2>
+                <div style="text-align: center">
+                    <p style="color: var(--text-muted)">Final Score</p>
+                    <p id="finalScore" style="font-size: 1.8rem; font-weight: bold; color: #f43f5e">0</p>
+                </div>
+                <button class="btn" id="restartBtn" style="width: auto; padding: 10px 20px;">Play Again</button>
+            </div>
+        </div>
+
+        <!-- Right Column: Scores & Next Previews -->
+        <div class="panel side-right">
+            <div class="sub-panel">
+                <div class="panel-title">Score</div>
+                <div class="panel-value" id="scoreVal">0</div>
+            </div>
+            <div class="sub-panel">
+                <div class="panel-title">High Score</div>
+                <div class="panel-value" id="highScoreVal">0</div>
+            </div>
+            <div class="sub-panel">
+                <div class="panel-title">Level</div>
+                <div class="panel-value" id="levelVal">1</div>
+            </div>
+            <div class="sub-panel">
+                <div class="panel-title">Lines</div>
+                <div class="panel-value" id="linesVal">0</div>
+            </div>
+            <div class="sub-panel">
+                <div class="panel-title">Next</div>
+                <canvas id="nextCanvas" class="preview-canvas" width="100" height="100"></canvas>
+            </div>
+            <div class="controls-hint">
+                <strong>Keys:</strong><br>
+                ← / → : Move<br>
+                ↑ : Rotate<br>
+                ↓ : Soft Drop<br>
+                Space : Hard Drop<br>
+                Shift : Hold Piece
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Virtual Pad -->
+    <div class="mobile-controls">
+        <button class="touch-btn" id="mLeft">⬅️</button>
+        <button class="touch-btn" id="mRight">➡️</button>
+        <button class="touch-btn" id="mRotate">🔄</button>
+        <button class="touch-btn" id="mDown">⬇️</button>
+        <button class="touch-btn" id="mHard" style="background: rgba(59,130,246,0.2)">⚡</button>
+        <button class="touch-btn" id="mHold" style="grid-column: span 5; font-size: 0.9rem; padding: 10px;">📦 Swap/Hold Piece</button>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
