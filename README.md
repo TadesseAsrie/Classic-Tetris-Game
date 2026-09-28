@@ -109,6 +109,7 @@ A modern, responsive implementation of the classic **Tetris** game built with **
 - High contrast support
 - Responsive layout
 - Screen reader friendly
+- finally host
 
 ---
 
